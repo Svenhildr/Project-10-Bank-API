@@ -13,15 +13,10 @@ ReactDOM.render(
  */
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import NavBar from "../components/NavBar";
 import Home from "../views/Home";
 import Signin from "../views/Signin";
 import Layout from "../components/Layout";
 import UserPage from "../views/Userpage";
-
-// import Features from "../views/Features";
-// import Footer from "./components/Footer";
-//import NotFound from './pages/NotFound';  Pour les routes non trouvées
 
 function App() {
     return (

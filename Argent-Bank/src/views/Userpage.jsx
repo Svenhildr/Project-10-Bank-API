@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 // import Layout from "../components/Layout";
 import "../css/main.css";
 
@@ -24,13 +25,15 @@ AccountSection.propTypes = {
 };
 
 const UserPage = () => {
+    const user = useSelector((state) => state.user);
+
     return (
         <main className="main bg-dark">
             <div className="header">
                 <h1>
                     Welcome back
                     <br />
-                    Tony Jarvis!
+                    {user.firstName} {user.lastName}!
                 </h1>
                 <button className="edit-button">Edit Name</button>
             </div>
