@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
-// import Layout from "../components/Layout";
+import { useDispatch, useSelector } from "react-redux";
 import "../css/main.css";
+import EditUserName from "../components/EditName";
 
 const AccountSection = ({ title, amount, description }) => (
     <section className="account">
@@ -17,7 +17,7 @@ const AccountSection = ({ title, amount, description }) => (
     </section>
 );
 
-// Validation des props
+// Validation des props pour AccountSection
 AccountSection.propTypes = {
     title: PropTypes.string.isRequired,
     amount: PropTypes.string.isRequired,
@@ -25,7 +25,14 @@ AccountSection.propTypes = {
 };
 
 const UserPage = () => {
-    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const { firstName, lastName, status } = useSelector((state) => state.user);
+    /*     // const user = useSelector((state) => state.user);
+
+    const handleSaveUsername = (newUsername) => {
+        // Mise à jour du username dans le Redux store
+        dispatch(setUser({ username: newUsername }));
+    }; */
 
     return (
         <main className="main bg-dark">
@@ -33,9 +40,9 @@ const UserPage = () => {
                 <h1>
                     Welcome back
                     <br />
-                    {user.firstName} {user.lastName}!
+                    {firstName} {lastName}!
                 </h1>
-                <button className="edit-button">Edit Name</button>
+                <EditUserName currentFirstName={firstName} currentLastName={lastName} /* onSave={handleSaveUsername} */ />
             </div>
             <h2 className="sr-only">Accounts</h2>
             <AccountSection title="Argent Bank Checking (x8349)" amount="$2,082.79" description="Available Balance" />
